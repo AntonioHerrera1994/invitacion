@@ -66,7 +66,24 @@
   </style>
 </head>
 <body>
-  <div class="card">
+
+     <!-- Música de fondo -->
+  <audio id="musicaFondo" loop>
+    <source src="./assets/yoshisong.mp3" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+  </audio>
+  
+      <!-- Pantalla de animación/video inicial -->
+  <div id="intro" class="intro">
+    <video autoplay muted playsinline onended="mostrarInvitacion()">
+      <source src="./assets/yoshi.mp4" type="video/mp4">
+      Tu navegador no soporta video HTML5.
+    </video>
+    <!-- O una animación si prefieres -->
+    <!-- <div class="animacion">🎈🎉✨</div> -->
+  </div>
+
+   <div id="invitacion" class="card" style="display: none;">
     <h1>¡Estás Invitado! 🎉</h1>
     <p>Ven a celebrar el <strong>cumpleaños de Bruni</strong> que cumple 8 años 🥳</p>
     <p>📍 <strong>Flyers Plaza Monarca</strong><br> Domingo 22 de junio a las 3:00 PM</p>
@@ -79,6 +96,19 @@
   </div>
 
   <script>
+
+function mostrarInvitacion() {
+      document.getElementById('intro').style.display = 'none';
+      document.getElementById('invitacion').style.display = 'block';
+
+      // Iniciar música después de terminar el video
+      const audio = document.getElementById('musicaFondo');
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(err => console.log("Reproducción de música bloqueada:", err));
+      }
+    }
+
     function abrirMapa() {
       window.open('https://maps.app.goo.gl/dUoqwD1ZimsMLtKP7', '_blank');
     }
