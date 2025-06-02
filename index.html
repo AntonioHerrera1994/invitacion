@@ -9,7 +9,9 @@
     body {
       margin: 0;
       font-family: 'Comic Neue', cursive;
-      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+      background: url(./assets/fondo.jpg);
+      background-size: cover;
+      background-position: center;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -33,7 +35,7 @@
 
     h1 {
       font-size: 2rem;
-      color: #ff6f61;
+      color: #DC143C;
     }
 
     p {
@@ -45,7 +47,7 @@
       display: inline-block;
       margin: 0.5rem;
       padding: 0.6rem 1.2rem;
-      background-color: #ff6f61;
+      background-color: #DC143C;
       color: white;
       border: none;
       border-radius: 12px;
@@ -66,11 +68,11 @@
 <body>
   <div class="card">
     <h1>¡Estás Invitado! 🎉</h1>
-    <p>Ven a celebrar el <strong>cumpleaños de Leo</strong> que cumple 7 años 🥳</p>
-    <p>📍 <strong>Parque de la Amistad</strong><br> Sábado 15 de junio a las 3:00 PM</p>
+    <p>Ven a celebrar el <strong>cumpleaños de Bruni</strong> que cumple 8 años 🥳</p>
+    <p>📍 <strong>Flyers Plaza Monarca</strong><br> Domingo 22 de junio a las 3:00 PM</p>
 
     <button class="button" onclick="abrirMapa()">🗺 Ver ubicación</button>
-    <button class="button" onclick="mostrarGustos()">🎁 Gustos de Leo</button>
+    <button class="button" onclick="mostrarGustos()">🎁 Gustos de Bruno</button>
     <button class="button" onclick="verSorpresa()">🎈 Ver Sorpresa</button>
 
     <p id="infoExtra" style="margin-top: 1rem;"></p>
