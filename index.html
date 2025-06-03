@@ -17,10 +17,11 @@
       background-size: cover;
       background-position: center;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       min-height: 100vh;
-      padding: 1rem;
+      padding: 2rem 1rem 1rem;
     }
 
     .card {
@@ -32,6 +33,7 @@
       max-width: 400px;
       text-align: center;
       animation: pop 0.6s ease-out;
+      margin-bottom: 1.5rem;
     }
 
     @keyframes pop {
@@ -70,12 +72,10 @@
       font-size: 1.5rem;
     }
 
-    video {
-      width: 100vw;
+    .gif-container img {
+      max-width: 100%;
       height: auto;
-      max-height: 100vh;
-      object-fit: cover;
-      display: block;
+      border-radius: 16px;
     }
 
     @media (max-width: 500px) {
@@ -93,21 +93,13 @@
 </head>
 <body>
 
-  <!-- Música de fondo (sin autoplay) -->
-  <audio id="musicaFondo" loop>
+  <!-- Música de fondo con autoplay y muted -->
+  <audio id="musicaFondo" loop autoplay>
     <source src="./assets/yoshisong.mp3" type="audio/mpeg">
     Tu navegador no soporta el elemento de audio.
   </audio>
-  
-  <!-- Pantalla de animación/video inicial -->
-  <div id="intro" class="intro">
-    <video autoplay muted playsinline onended="mostrarInvitacion()">
-      <source src="./assets/yoshi.mp4" type="video/mp4">
-      Tu navegador no soporta video HTML5.
-    </video>
-  </div>
 
-  <div id="invitacion" class="card" style="display: none;">
+  <div id="invitacion" class="card">
     <h1>¡Estás Invitado! 🎉</h1>
     <p>Ven a celebrar el <strong>cumpleaños de Bruni</strong> que cumple 8 años 🥳</p>
     <p>📍 <strong>Flyers Plaza Monarca</strong><br> Domingo 22 de junio a las 3:00 PM</p>
@@ -119,32 +111,41 @@
     <p id="infoExtra" style="margin-top: 1rem;"></p>
   </div>
 
+  <!-- Espacio para GIF decorativo -->
+  <div class="gif-container">
+    <img src="./assets/yoshigif.gif" alt="Decoración animada">
+  </div>
+
   <script>
-    function mostrarInvitacion() {
-      document.getElementById('intro').style.display = 'none';
-      document.getElementById('invitacion').style.display = 'block';
+  window.addEventListener('DOMContentLoaded', () => {
+  const audio = document.getElementById('musicaFondo');
+  
+  // Intenta reproducir inmediatamente
+  const playPromise = audio.play();
+  
+  if (playPromise !== undefined) {
+    playPromise.then(_ => {
+      // Reproducción iniciada automáticamente
+    })
+    .catch(error => {
+      // Si falla, mostrar botón de reproducción
+      mostrarBotonReproduccion();
+    });
+  }
+});
 
-      // Iniciar música después de terminar el video
-      const audio = document.getElementById('musicaFondo');
-      const playPromise = audio.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(err => console.log("Reproducción de música bloqueada:", err));
-      }
-    }
-
-    function abrirMapa() {
-      window.open('https://maps.app.goo.gl/dUoqwD1ZimsMLtKP7', '_blank');
-    }
-
-    function mostrarGustos() {
-      const gustos = "A Bruno le encantan los dinosaurios 🦖, los legos 🧱 y el helado de chocolate 🍫!";
-      document.getElementById('infoExtra').textContent = gustos;
-    }
-
-    function verSorpresa() {
-      const sorpresa = "¡Habrá un show de magia 🪄 y piñata gigante llena de dulces 🍬!";
-      document.getElementById('infoExtra').textContent = sorpresa;
-    }
+function mostrarBotonReproduccion() {
+  // Crear un botón que permita al usuario iniciar la música
+  const boton = document.createElement('button');
+  boton.className = 'button';
+  boton.textContent = '▶ Reproducir música';
+  boton.onclick = () => {
+    document.getElementById('musicaFondo').play();
+    boton.remove();
+  };
+  document.body.appendChild(boton);
+}
   </script>
 </body>
 </html>
+
