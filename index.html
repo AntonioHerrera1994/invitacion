@@ -14,6 +14,11 @@
   <meta property="og:image:height" content="630">
   <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
   <style>
+
+html {
+  scroll-behavior: smooth;
+}
+
     * {
       box-sizing: border-box;
     }
@@ -143,14 +148,22 @@
 });
 
 function mostrarBotonReproduccion() {
-  // Crear un botón que permita al usuario iniciar la música
   const boton = document.createElement('button');
   boton.className = 'button';
-  boton.textContent = '🦖 ¡Baila con Yoshi! ';
+  boton.textContent = '🦖 ¡Pisa fuerte como Yoshi para la música!';
+  
   boton.onclick = () => {
-    document.getElementById('musicaFondo').play();
+    const audio = document.getElementById('musicaFondo');
+    audio.play().then(() => {
+      // Scroll suave hacia arriba después de reproducir
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
     boton.remove();
   };
+  
   document.body.appendChild(boton);
 }
 
