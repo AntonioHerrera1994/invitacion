@@ -184,6 +184,17 @@ window.addEventListener('DOMContentLoaded', () => {
 
 });
 
+// Pausar música al cambiar de pestaña o minimizar la app (especial para móviles)
+document.addEventListener('visibilitychange', () => {
+  const audio = document.getElementById('musicaFondo');
+  
+  if (document.hidden) { // Si la página no es visible
+    audio.pause();
+  } else { // Si el usuario vuelve a la página
+    // Opcional: Reproducir solo si antes estaba activa
+    if (!audio.paused) audio.play().catch(e => console.log("Error al reanudar:", e));
+  }
+});
 
   </script>
 </body>
