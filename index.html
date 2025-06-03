@@ -175,19 +175,31 @@ function abrirMapa() {
       window.open('https://maps.app.goo.gl/dUoqwD1ZimsMLtKP7', '_blank');
     }
 
-    function mostrarGustos() {
-      const gustos = "A Bruno le encantan los dinosaurios 🦖";
-      const gustos2 = "También Animales marinos 🐳"
-      const gustos3 = "Además Pokémon y Yoshi 🦎"
-      document.getElementById('infoExtra').textContent = gustos + "\n" + gustos2 + "\n" + gustos3;
-    }
+// Función para mostrar/ocultar gustos
+function mostrarGustos() {
+  const infoExtra = document.getElementById('infoExtra');
+  const gustos = "A Bruno le encantan los dinosaurios 🦖\nTambién Animales marinos 🐳\nAdemás Pokémon y Yoshi 🦎";
+  
+  // Si ya muestra el contenido, lo oculta; si no, lo muestra
+  if (infoExtra.textContent === gustos) {
+    infoExtra.textContent = '';
+  } else {
+    infoExtra.textContent = gustos;
+  }
+}
 
-    function mostrarTallas(){
-      const tallas = "Ropa: 10-12 años"
-      const zapatos = "Zapatos: 1-2 Mexicano"
-      document.getElementById('infoTallas').textContent = tallas + "\n" + zapatos;
-      
-    }
+// Función para mostrar/ocultar tallas
+function mostrarTallas() {
+  const infoTallas = document.getElementById('infoTallas');
+  const tallas = "Sus talla en ropa y zapatos son:\nRopa: 10-12 años\nZapatos: 1-2 Mexicano";
+  
+  // Alternar contenido
+  if (infoTallas.textContent === tallas) {
+    infoTallas.textContent = '';
+  } else {
+    infoTallas.textContent = tallas;
+  }
+}
 
 function mostrarBotonReproduccion() {
   const boton = document.createElement('button');
