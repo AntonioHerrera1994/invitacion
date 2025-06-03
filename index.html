@@ -160,18 +160,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }, 500);
   }
   
-  // Tu código existente de audio...
-  const audio = document.getElementById('musicaFondo');
-  const playPromise = audio.play();
-  
-  if (playPromise !== undefined) {
-    playPromise.then(_ => {
-      // Reproducción iniciada automáticamente
-    })
-    .catch(error => {
-      mostrarBotonReproduccion();
-    });
-  }
+
 });
 
 
