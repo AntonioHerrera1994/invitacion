@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Invitación Fiesta Infantil</title>
+  <title>¡FELIZ CUMPLEAÑOS BRUNO!</title>
   <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -106,7 +106,7 @@
 
     <button class="button" onclick="abrirMapa()">🗺 Ver ubicación</button>
     <button class="button" onclick="mostrarGustos()">🎁 Gustos de Bruno</button>
-    <button class="button" onclick="verSorpresa()">📲 Confirmar Aistencia</button>
+    <a href="https://wa.link/wnhiwk"><button class="button" onclick="verSorpresa()">📲 Confirmar Aistencia</button></a>
 
     <p id="infoExtra" style="margin-top: 1rem;"></p>
   </div>
@@ -145,6 +145,36 @@ function mostrarBotonReproduccion() {
   };
   document.body.appendChild(boton);
 }
+
+
+// Desplazamiento automático solo en móvil
+window.addEventListener('DOMContentLoaded', () => {
+  // Detectar si es móvil (ancho menor a 768px)
+  if (window.innerWidth <= 768) {
+    // Desplazamiento suave al fondo después de 500ms (para esperar la carga)
+    setTimeout(() => {
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+      });
+    }, 500);
+  }
+  
+  // Tu código existente de audio...
+  const audio = document.getElementById('musicaFondo');
+  const playPromise = audio.play();
+  
+  if (playPromise !== undefined) {
+    playPromise.then(_ => {
+      // Reproducción iniciada automáticamente
+    })
+    .catch(error => {
+      mostrarBotonReproduccion();
+    });
+  }
+});
+
+
   </script>
 </body>
 </html>
