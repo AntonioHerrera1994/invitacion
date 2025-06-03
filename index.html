@@ -81,6 +81,10 @@ html {
   white-space: pre; /* Respeta los saltos de línea */
 }
 
+#infoExtra{
+  white-space: pre; 
+}
+
     .button:hover {
       background-color: #e85a4f;
     }
@@ -135,7 +139,7 @@ html {
     <button class="button" onclick="abrirMapa()">🗺 Ver ubicación</button>
     <div class="btn-par">
     <button class="button" onclick="mostrarGustos()">🎁 Sus Gustos</button>
-    <button class="button" onclick="mostrarTallas()">🎁 Sus Tallas</button>
+    <button class="button" onclick="mostrarTallas()">👕 Sus Tallas</button>
   </div>
     <a href="https://wa.link/wnhiwk"><button class="button" onclick="verSorpresa()">📲 Confirmar Aistencia</button></a>
 
@@ -172,8 +176,10 @@ function abrirMapa() {
     }
 
     function mostrarGustos() {
-      const gustos = "A Bruno le encantan los dinosaurios 🦖, los legos 🧱 y el helado de chocolate 🍫!";
-      document.getElementById('infoExtra').textContent = gustos;
+      const gustos = "A Bruno le encantan los dinosaurios 🦖";
+      const gustos2 = "También Animales marinos 🐳"
+      const gustos3 = "Además Pokémon y Yoshi 🦎"
+      document.getElementById('infoExtra').textContent = gustos + "\n" + gustos2 + "\n" + gustos3;
     }
 
     function mostrarTallas(){
