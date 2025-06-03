@@ -6,6 +6,10 @@
   <title>Invitación Fiesta Infantil</title>
   <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Comic Neue', cursive;
@@ -15,7 +19,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
+      padding: 1rem;
     }
 
     .card {
@@ -23,6 +28,7 @@
       border-radius: 20px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
       padding: 2rem;
+      width: 100%;
       max-width: 400px;
       text-align: center;
       animation: pop 0.6s ease-out;
@@ -45,7 +51,7 @@
 
     .button {
       display: inline-block;
-      margin: 0.5rem;
+      margin: 0.5rem 0.25rem;
       padding: 0.6rem 1.2rem;
       background-color: #DC143C;
       color: white;
@@ -63,27 +69,45 @@
     .emoji {
       font-size: 1.5rem;
     }
+
+    video {
+      width: 100vw;
+      height: auto;
+      max-height: 100vh;
+      object-fit: cover;
+      display: block;
+    }
+
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+      p, .button {
+        font-size: 1rem;
+      }
+      .button {
+        padding: 0.5rem 1rem;
+      }
+    }
   </style>
 </head>
 <body>
 
-     <!-- Música de fondo -->
+  <!-- Música de fondo (sin autoplay) -->
   <audio id="musicaFondo" loop>
     <source src="./assets/yoshisong.mp3" type="audio/mpeg">
     Tu navegador no soporta el elemento de audio.
   </audio>
   
-      <!-- Pantalla de animación/video inicial -->
+  <!-- Pantalla de animación/video inicial -->
   <div id="intro" class="intro">
     <video autoplay muted playsinline onended="mostrarInvitacion()">
       <source src="./assets/yoshi.mp4" type="video/mp4">
       Tu navegador no soporta video HTML5.
     </video>
-    <!-- O una animación si prefieres -->
-    <!-- <div class="animacion">🎈🎉✨</div> -->
   </div>
 
-   <div id="invitacion" class="card" style="display: none;">
+  <div id="invitacion" class="card" style="display: none;">
     <h1>¡Estás Invitado! 🎉</h1>
     <p>Ven a celebrar el <strong>cumpleaños de Bruni</strong> que cumple 8 años 🥳</p>
     <p>📍 <strong>Flyers Plaza Monarca</strong><br> Domingo 22 de junio a las 3:00 PM</p>
@@ -96,8 +120,7 @@
   </div>
 
   <script>
-
-function mostrarInvitacion() {
+    function mostrarInvitacion() {
       document.getElementById('intro').style.display = 'none';
       document.getElementById('invitacion').style.display = 'block';
 
