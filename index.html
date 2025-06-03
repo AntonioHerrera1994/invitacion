@@ -77,6 +77,10 @@ html {
       transition: background 0.3s;
     }
 
+    #infoTallas {
+  white-space: pre; /* Respeta los saltos de línea */
+}
+
     .button:hover {
       background-color: #e85a4f;
     }
@@ -91,6 +95,13 @@ html {
       border-radius: 16px;
     }
 
+    .btn-par{
+      display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Siempre 2 columnas */
+  gap: 8px;
+  width: 100%;
+    }
+
     @media (max-width: 500px) {
       h1 {
         font-size: 1.5rem;
@@ -101,6 +112,10 @@ html {
       .button {
         padding: 0.5rem 1rem;
       }
+
+      .btn-par{
+        grid-template-columns: repeat(1, 1fr); /* Siempre 2 columnas */         
+    }
     }
   </style>
 </head>
@@ -114,14 +129,18 @@ html {
 
   <div id="invitacion" class="card">
     <h1>¡Estás Invitado! 🎉</h1>
-    <p>Ven a celebrar el <strong>cumpleaños de Bruno</strong> que cumple 8 años 🥳</p>
-    <p>📍 <strong>Flyers Plaza Monarca</strong><br> Domingo 22 de junio a las 3:00 PM</p>
+    <p>Ven a celebrar el <strong>cumpleaños de <span style="color:red;">Bruno</span></strong> que cumple 8 años 🥳</p>
+    <p>📍 <strong>Flyers Plaza Monarca</strong><br> Domingo 22 de junio a las 2:00 PM</p>
 
     <button class="button" onclick="abrirMapa()">🗺 Ver ubicación</button>
-    <button class="button" onclick="mostrarGustos()">🎁 Gustos de Bruno</button>
+    <div class="btn-par">
+    <button class="button" onclick="mostrarGustos()">🎁 Sus Gustos</button>
+    <button class="button" onclick="mostrarTallas()">🎁 Sus Tallas</button>
+  </div>
     <a href="https://wa.link/wnhiwk"><button class="button" onclick="verSorpresa()">📲 Confirmar Aistencia</button></a>
 
     <p id="infoExtra" style="margin-top: 1rem;"></p>
+    <p id="infoTallas" style="margin-top: 1rem;"></p>
   </div>
 
   <!-- Espacio para GIF decorativo -->
@@ -146,6 +165,23 @@ html {
     });
   }
 });
+
+
+function abrirMapa() {
+      window.open('https://maps.app.goo.gl/dUoqwD1ZimsMLtKP7', '_blank');
+    }
+
+    function mostrarGustos() {
+      const gustos = "A Bruno le encantan los dinosaurios 🦖, los legos 🧱 y el helado de chocolate 🍫!";
+      document.getElementById('infoExtra').textContent = gustos;
+    }
+
+    function mostrarTallas(){
+      const tallas = "Ropa: 10-12 años"
+      const zapatos = "Zapatos: 1-2 Mexicano"
+      document.getElementById('infoTallas').textContent = tallas + "\n" + zapatos;
+      
+    }
 
 function mostrarBotonReproduccion() {
   const boton = document.createElement('button');
